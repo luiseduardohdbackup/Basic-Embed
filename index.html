@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<!-- 
+Copyright (c) 2011 TokBox, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+No rights or license are granted to use, modify, distribute or redistribute any
+TokBox mark (any TokBox name, logo, trademark or service mark), including
+those originally built into this Software, unless you have entered a separate
+written trademark license agreement with TokBox.
+ -->
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>HTML Embed</title>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+	
+	<!--[if IE]>
+	   <style type="text/css">
+	   .ieTransparent7 {
+			background: transparent;
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000)"; 
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000,endColorstr=#B2000000);
+			zoom: 1;
+		}
+	    </style>
+	<![endif]-->
+	
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
+	<script type="text/javascript" charset="utf-8">
+	var SessionData = {
+		"open":true,
+		"session_id":"1_MX4wfn4yMDExLTEwLTE0IDAwOjM2OjMwLjUyNjI5OCswMDowMH4wLjE5MjU5NzQ1NDgyOH4",
+		"token":"devtoken",
+		"apiKey":"1127",
+		"hostURL":"REPLACE WITH URL FOR SHARING",
+		"embedID":"REPLACE WITH EMBED ID",
+		"embedURL":"http://staging.tokbox.com/hl/embed/",
+		"loggingURL":"http://hlg.tokbox.com/viper"
+	};
+	</script>
+	
+	<script src="http://staging.tokbox.com/v0.91/js/TB.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/Main.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/StrongCookie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/draggingClick.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/layout.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/animate.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bottombar.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/Ajax.js" charset="utf-8"></script>
+	<script src="js/analytics.js" charset="utf-8"></script>
+</head>
+<body>
+	<div id="bottomBar">
+		<table style="width:100%;">
+			<tr>
+				<td id="logoBox">
+					<a id="tbLogo">
+						<img src="img/ot-logo.png">
+					</a>
+				</td>
+				<td id="shareBox">
+					<div id="shareBoxDiv" style="margin: 0 auto; width: 89px;">
+						<a href="#" id="emLogo" class="emLogo"></a>
+						<a href="#" id="fbLogo" class="fbLogo"></a>
+						<a href="#" id="twLogo" class="twLogo"></a>
+					</div>
+				</td>
+				<td id="buttonBox">
+					<a href="#" id="closeBtn"></a>
+					<a href="#" id="muteBtn" class=""></a>
+					<a href="#" id="lockBtn" class="lockBtnReg"></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="htmlEmbed" class="chatOpenBg">
+		<div id="shareBg">
+			<div style="text-align: center; font-size: 11px;">
+				Invite your friends
+			</div>
+			<div style="text-align: center; margin-top: 10px;">
+				<a id="shareBgEmail" class="emLogo"></a>
+				<a id="shareBgFb" class="fbLogo"></a>
+				<a id="shareBgTw" class="twLogo"></a>
+			</div>
+		</div>	
+		
+		<div id="publisherContainer">
+			<div id="draggable"></div>
+		</div>
+		<div id="subscriberBox"></div>
+
+		<!-- num watching overlay when publishing -->
+		<div id="showNumWatchingOverlay" class="" style="position: absolute; top: 0px; right: 20px; display: none;">
+			<div style="background-color: rgb(0,0,0); background-color: rgba(0,0,0,.7); margin-right: 3px; border-radius: 0px 0px 5px 5px;">
+				<div style="padding: 2px 0px; overflow: hidden; text-align: center;">
+					<div style="width: 80px; float: left; font-size: 10px; color: #ffffff; line-height: 1.4;">
+						<div><span id="wjNumWatching">?</span> Watching</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- join others view -->
+		<div id="viewJoinOthers" class="" style="position: absolute; top: 0px; right: 20px;">
+			<div style="background-color: rgb(0,0,0); background-color: rgba(0,0,0,.7); margin-right: 10px; border-radius: 0px 0px 10px 10px;">
+				<div id="joEleContainer" style="padding: 20px; overflow: hidden;">
+					<div style="width: 90px; float: left; font-size: 10px; color: #ffffff; line-height: 1.4;">
+						<div><span id="joNumBroadcasting">?</span> Broadcasting</div>
+						<div><span id="joNumWatching">?</span> Watching</div>
+					</div>
+					<div style="float: right">
+						<a id="btnJoinOthers" class="btn" style="width: 90px;">Join chat</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- join as first view -->
+		<div id="viewJoinAsFirst" class="fullOverlay" style="display: none;">
+			<table style="width: 100%; padding-bottom: 30px;">
+				<tr>
+					<td id="imgSilhouetteCell" style="text-align: left;">
+						<div id="imgSilhouetteContainer" style="overflow: hidden;">
+							<img id="imgSilhouette" src="img/silhouette.png" alt="" style="position: relative;" />
+						</div>
+					</td>
+					<td id="imgSilhouetteCellSibling" style="width: 200px;">
+						<div id="joinAsFirstRightImage"></div>
+						<div style="width: 120px; margin-left: auto; margin-right: auto;">
+							<a id="btnJoinAsFirst"></a>
+							<div style="margin-top: 30px; color: #9a9a9a;">
+								<div id="jfNumWatching" style="float: left; width: 30px; font-size: 28px; position: relative; top: -2px;">?</div>
+								<div id="joinAsFirstPeepsMssg" style="float: right: width: 90px; font-size: 10px; font-style: italic; text-align: left; line-height: 1.3;">people are on this page right now!</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<!-- mediator secret view -->
+		<div id="viewMediatorSecret" class="regbox" style="display: none;">
+			<div id="mediatorSecretTopHeader" class="topHeader">
+				Moderation
+			</div>
+			<form style="height: 100%; width: 150px; margin-left: 25px;">
+				<div style="margin-top: 50px;">
+					Secret phrase
+					<br />
+					<input id="secretPhrase" name="secretPhrase" type="password" />
+					<br />	
+					<div id="secretPhraseErrorMssg" style="text-align: right; font-size: 11px; color: #ff0000; display: none;">
+						invalid password
+					</div>
+					<a id="forgotSecret" style="font-size: 11px;">Forgot secret?</a>
+				</div>
+				<a id="btnJoinChatAsMediator" class="btn" style="width: 90px; position: absolute; bottom: 20px;">Unlock</a>
+				<a id="goBackFromMediator" style="float: right; position: absolute; bottom: 23px; left: 130px; cursor: pointer;">Back</a>
+			</form>
+		</div>
+
+		<!-- mediator rejoin view -->
+		<div id="viewMediatorRejoin" class="regbox" style="display: none;">
+			<div class="topHeader">
+				Moderation
+			</div>
+			<div style="height: 100%; width: 170px; margin-left: 15px;">
+				<div class="innerUiWhiteBox" style="height: 90px; margin-top: 38px;">	
+					<div>
+						<h5>
+							Rejoin required
+						</h5>
+						<p>
+							For your moderator status to take effect, please rejoin the chat.
+						</p>
+					</div>
+				</div>
+				<a id="btnModeratorRejoin" style="float: right; position: absolute; bottom: 25px; right: 15px; cursor: pointer;">OK, rejoin!</a>
+			</div>
+		</div>
+		
+		<!-- forgot password view -->
+		<div id="viewRecoverPassword" class="regbox" style="display: none;">
+			<div style="height: 100%; width: 170px; margin-left: 15px;">
+				<div class="innerUiWhiteBox">	
+					<div>
+						<h5 id="rpHeader">
+							Recover secret
+						</h5>
+						<p id="rpBody">
+							Have your secret sent to your email address?
+						</p>
+						<a id="btnSendEmail" class="btnGrey" style="width: 140px; margin-left: 15px; position: absolute; bottom: 10px;">Yes, send email</a>
+					</div>
+				</div>
+				<a id="goBackFromRecoverPassword" style="float: right; position: absolute; bottom: 25px; left: 130px; cursor: pointer;">&lt; Back</a>
+			</div>
+		</div>		
+		
+		<!-- view moderator exit -->
+		<div id="viewModeratorExit" class="regbox" style="display: none;">
+			<div style="height: 170px; margin-top: 15px; width: 150px; margin-left: 25px;">
+				Done chatting?
+				<a id="btnModeratorLeaveChat" class="btn" style="width: 150px; margin-top: 20px;">Leave chat</a>
+				<a id="btnModeratorShutDownChat" class="btn btnred" style="width: 150px; margin-top: 6px;">Shut down chat</a>
+				<a id="btnModeratorCancelExit" style="width: 150px; position: absolute; bottom: 20px; text-align: right; cursor: pointer;">Cancel</a>
+			</div>
+		</div>
+		
+		<!-- view send email to friend -->
+		<div id="viewShareEmail" class="regbox" style="display: none;">
+
+			<div style="margin-left: 25px; margin-top: 20px; font-weight: bold;">
+				Email chat invite
+			</div>
+			<div id="shareEmailPrepareContainer" style="margin-top: 20px; margin-left: 25px; height: 100%; width: 150px; font-size: 12px;">
+				<form>
+					To
+					<br />
+					<input id="shareEmailAddress" name="shareEmail" type="text" />
+					<br />
+					<div id="shareEmailLabel" style="color: #999999;">
+						email address
+					</div>
+					<div id="shareEmailErrorMssg" style="color: #ff0000; display: none;">
+						error
+					</div>
+					<a id="btnShareEmail" class="btn" style="width: 90px; position: absolute; bottom: 20px;">Send</a>
+					<a id="btnShareEmailCancel" style="float: right; position: absolute; bottom: 23px; left: 130px; cursor: pointer;">Cancel</a>
+				</form>
+			</div>
+			<div id="shareEmailSentContainer" style="display: none;" style="display: none;">
+				<div class="innerUiWhiteBox" style="margin-left: 15px; height: 80px;">	
+					<div>
+						<h5>
+							Invite sent to
+						</h5>
+						<p id="shareEmailSentMssg" class="breakword">
+						</p>
+					</div>
+				</div>
+				<a id="btnShareEmailDone" style="float: right; position: absolute; bottom: 23px; left: 130px; cursor: pointer;">Done</a>
+			</div>
+
+		</div>
+		
+		
+		
+	</div>
+	
+	
+	
+	<!-- closed chat view --> 
+	<div id="viewChatClosed" class="fullOverlay" style="display: none;">
+		<table style="width: 160px;">
+			<tr>
+				<td>
+					<h5 style="font-size: 14px; font-weight: bold;">
+						Video chat was closed by the moderator
+					</h5>
+					<div class="providedBy">
+						<p>
+							Provided by
+						</p>
+						<img src="img/tb-logo_simple.png"/>
+					</div>
+					<a id="btnRestartChat" class="btnGrey" style="position: absolute; right: 10px; bottom: 10px; padding: 4px 15px; margin-top: 20px;">Reopen chat</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<!-- Banned view -->
+	<div id="viewBanned" class="fullOverlay" style="display: none;">
+		<table>
+			<tr>
+				<td>
+					<h5 style="font-size: 13px; font-weight: bold; color: #be1f00;">
+						You were permanently removed from the chat
+					</h5>
+					<div class="providedBy">
+						<p>
+							Provided by
+						</p>
+						<img src="img/tb-logo_simple.png"/>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div id="banOverlay" style="display: none;">
+		<div id="banBG"></div>
+		<div id="banHover">Ban?</div>
+		<a href="#" id="banButton"></a>
+	</div>
+	
+	
+	<!-- transparent modal overlay -->
+	<div id="modalOverlay" class="fullOverlay">
+	</div>
+
+	
+</body>
+</html>

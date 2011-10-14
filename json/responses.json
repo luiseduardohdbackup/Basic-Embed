@@ -1,0 +1,25 @@
+
+http://viper.opentok.com:4015/embed/2/join
+{	
+	"open":true, 
+	"session_id":"1450cf7ec49b6646df6dea1170f7ac4583600365", 
+	"token":"T1==cGFydG5lcl9pZD0xMDAwMDMmc2RrX3ZlcnNpb249dGJweS1Ac2RrX3ZlcnNpb25ALkBvcGVudG9rLnNkay5weXRob24ubW9kX3RpbWVAJnNpZz1kNGZiMmE1NTI4MTJlNGU2MmI1MzZlYTUwYjYxNjlhNWFiOWQzNTExOm5vbmNlPTMyMTExNiZjcmVhdGVfdGltZT0xMzAwNTYxODY1JnJvbGU9cHVibGlzaGVyJnNlc3Npb25faWQ9MTQ1MGNmN2VjNDliNjY0NmRmNmRlYTExNzBmN2FjNDU4MzYwMDM2NQ=="
+}
+
+
+http://viper.opentok.com:4015/embed/2/auth?password=wassup
+{
+	"open":true, 
+	"session_id":"1450cf7ec49b6646df6dea1170f7ac4583600365", 
+	"token":"T1==cGFydG5lcl9pZD0xMDAwMDMmc2RrX3ZlcnNpb249dGJweS1Ac2RrX3ZlcnNpb25ALkBvcGVudG9rLnNkay5weXRob24ubW9kX3RpbWVAJnNpZz00MGJhNzU0OTZmNTkxZGU4NjZiNzNlODUzZWVmZmVlODdlOWE4NjcyOm5vbmNlPTczMjk5JmNyZWF0ZV90aW1lPTEzMDA1NjU4MTAmcm9sZT1wdWJsaXNoZXImc2Vzc2lvbl9pZD0xNDUwY2Y3ZWM0OWI2NjQ2ZGY2ZGVhMTE3MGY3YWM0NTgzNjAwMzY1"
+}
+
+
+http://viper.opentok.com:4015/embed/2/end?password=wassup
+
+Success or Failure
+
+
+
+
+

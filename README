@@ -1,0 +1,43 @@
+= Basic Embed =
+
+
+== Intro ==
+
+This is the Open Source version of the basic embed. It currently just points to staging and uses devtoken and 1127 as the apiKey. If you want to actually run this in production you will need to replace these values with your corresponding apiKey and token. For more details on how to do this have a look at our documentation.
+
+http://www.tokbox.com/opentok/api/documentation/gettingstarted
+
+
+
+== Running/Installation ==
+
+To enable the page to work directly from the desktop using a "file://" prefix, you need to change Flash's security settings. You can do this using a page online that Adobe provides:
+
+1. Go to this web page: http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html
+2. Wait patiently while the Flash app initializes (it can take a while)
+3. Select "Add location" from the "Edit locations..." pull down menu
+4. Either specify the individual file location of the HTML page, or the file folder in which it is located (to make sure any other app pages you might have in the same directory also work).
+5. You should find that the HTML page starts working after this.
+
+This will allow the basic embed to run locally. Right now the application is hard coded to work against staging using the a hard coded session id. If you want to actually have the embed run from your own environment you will need to do a little more work. You will need to replace the following in index.html with legitimate values:
+
+var SessionData = {
+	"open":true,
+	"session_id":"1_MX4wfn4yMDExLTEwLTE0IDAwOjM2OjMwLjUyNjI5OCswMDowMH4wLjE5MjU5NzQ1NDgyOH4",
+	"token":"devtoken",
+	"apiKey":"1127",
+	"hostURL":"REPLACE WITH URL FOR SHARING",
+	"embedID":"REPLACE WITH EMBED ID",
+	"embedURL":"http://staging.tokbox.com/hl/embed/",
+	"loggingURL":"http://hlg.tokbox.com/viper"
+};
+
+
+* open - Whether or not the embed is currently open, if it is closed a moderator needs to open it with their secret.
+* session_id - Replace with your generated session id
+* token - Replace with a legitimate token created with generate_token in one of the server side SDKs
+* apiKey - Replace with your apiKey
+* hostURL - This is the URL that gets shared when you share on facebook or twitter
+* embedID - The ID of the embed which is created when you sign up for a basic embed
+* embedURL - This is the URL of the server side API. If you don't want to recreate the TokBox server side SDK you can create a proxy to http://api.opentok.com/hl/embed
+* loggingURL - We use this URL to log analytics data. This is optional.
